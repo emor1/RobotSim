@@ -1,17 +1,16 @@
-#シンプルに簡単な三角関数から手先位置を求めるシミュレーション(最大リンク数3)
+#シンプルに簡単な三角関数から手先位置を求めるシミュレーション
 
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
 #点と線の描画、スケールの設定
-def plotPoint_Line(link,xscl,yscl,deg1,deg2=0,deg3=0,N=1):
+def plotPoint_Line(link,xscl,yscl,*deg,N=1):
     x1=0
     y1=0
     degs=[]
-    deg=[deg1,deg2,deg3]
-    if N>3:
-        print("Error\nLink Number is {n} , that is greater than 3".format(n=N))
+    if N!=len(deg):
+        print("Error\nDoes not match number of links and degrees")
         sys.exit()
     for link_num in range(0,N):
         degs.append(deg[link_num])
@@ -36,14 +35,12 @@ def plotPoint_Line(link,xscl,yscl,deg1,deg2=0,deg3=0,N=1):
 #リンクの長さ
 link=3
 #リンクの数
-N=3
+N=4
 #回転角度
-deg1=10
-deg2=30
-deg3=-20
+deg=[10,30,-20]
 
 
 xscal=yscal=10  #scale
-plotPoint_Line(link,xscal,yscal,deg1=deg1,deg2=deg2,deg3=deg3,N=N)
+plotPoint_Line(link,xscal,yscal,*deg,N=N)
 
 
