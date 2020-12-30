@@ -5,13 +5,14 @@ import numpy as np
 import sys
 
 #点と線の描画、スケールの設定
-def plotPoint_Line(link,xscl,yscl,*deg,N=1):
+def plotPoint_Line(link,xscl,yscl,*deg):
     x1=0
     y1=0
     degs=[]
-    if N!=len(deg):
-        print("Error\nDoes not match number of links and degrees")
-        sys.exit()
+    N=len(deg)
+    # if N>len(deg):
+        # print("Error")
+        # sys.exit()
     for link_num in range(0,N):
         degs.append(deg[link_num])
         #xとyの位置を計算
@@ -24,23 +25,21 @@ def plotPoint_Line(link,xscl,yscl,*deg,N=1):
         x1=x+x1
         y1=y+y1
     plt.text(x1-0.1,y1+0.5,'(X:{x},Y:{y})'.format(x=round(x1,1),y=round(y1,1)))
-    plt.text(0.5,y1+2,'Link Length:{link}'.format(link=link))
+    plt.text(0.5,yscal-2,'Link Length:{link}'.format(link=link))
     #グラフのx軸とy軸のスケールをそれぞれ0から10に
     plt.xlim(0,xscl)
     plt.ylim(0,yscl)
-    plt.show()
 
 #原点
 # origin=[0,0]
 #リンクの長さ
-link=3
-#リンクの数
-N=4
+link=2
 #回転角度
-deg=[10,30,-20]
+deg=[60,-40,40]
+deg2=[20,10]
+xscal=yscal=link*len(deg)  #scale
 
-
-xscal=yscal=10  #scale
-plotPoint_Line(link,xscal,yscal,*deg,N=N)
-
-
+plotPoint_Line(link,xscal,yscal,*deg)
+plotPoint_Line(link,xscal,yscal,*deg2)
+plt.grid(True)
+plt.show()
