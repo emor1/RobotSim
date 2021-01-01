@@ -1,3 +1,6 @@
-#vscodeのjson
+#folders
 .vscode/
+dev/
+
+#files
 *.exe

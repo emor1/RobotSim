@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
+fig, ax = plt.subplots(figsize=(8,8))
+
 #点と線の描画、スケールの設定
 def plotPoint_Line(link,xscl,yscl,*deg):
     x1=0
@@ -36,10 +38,7 @@ def plotPoint_Line(link,xscl,yscl,*deg):
 link=2
 #回転角度
 deg=[60,-40,40]
-deg2=[20,10]
 xscal=yscal=link*len(deg)  #scale
-
 plotPoint_Line(link,xscal,yscal,*deg)
-plotPoint_Line(link,xscal,yscal,*deg2)
 plt.grid(True)
 plt.show()
